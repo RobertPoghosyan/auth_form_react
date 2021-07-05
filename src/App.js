@@ -1,11 +1,11 @@
 import React from "react";
 
-import AuthFormik from "containers/AuthFormik/AuthFormik";
+import Auth from "containers/Auth/Auth"
 
 function App() {
   return (
     <div className="App">
-      <AuthFormik></AuthFormik>
+      <Auth></Auth>
     </div>
   );
 }

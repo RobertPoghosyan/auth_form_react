@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 
-import LoginFormik from "./LoginFormik/LoginFormik";
-import SignupFormik from "./SignupFormik/SignupFormik";
+import Login from "./Login/Login";
+import Signup from "./Signup/Signup";
 
-import "./AuthFormik.scss";
+import "./Auth.scss";
 
-export const AuthFormik = () => {
+export const Auth = () => {
   const [isSignIn, setIsSignIn] = useState(true);
 
   const toggleView = () => {
@@ -16,13 +16,13 @@ export const AuthFormik = () => {
     <div className="app-auth">
       <div className="app-auth-form">
         {isSignIn ? (
-          <LoginFormik changePage={toggleView} />
+          <Login changePage={toggleView} />
         ) : (
-          <SignupFormik changePage={toggleView} />
+          <Signup changePage={toggleView} />
         )}
       </div>
     </div>
   );
 };
 
-export default AuthFormik;
+export default Auth;

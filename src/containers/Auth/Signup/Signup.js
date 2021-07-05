@@ -2,13 +2,20 @@ import React from "react";
 import { Formik, Form, Field } from "formik";
 
 import { signupSchema } from "validate/signupSchema";
+import { registerSubmit } from "api/service";
 import logo from "assets/logo.svg";
 
-import "./SignupFormik.scss";
+import "./Signup.scss";
 
-export const SignupFormik = (props) => {
+export const Signup = (props) => {
   const changePage = () => {
     props.changePage();
+  };
+
+  const initialValues = {
+    userName: "",
+    password: "",
+    confirmPassword: "",
   };
 
   return (
@@ -19,37 +26,13 @@ export const SignupFormik = (props) => {
           <h4>Register now!</h4>
         </div>
         <Formik
-          initialValues={{
-            userName: "",
-            password: "",
-            confirmPassword: "",
-          }}
+          initialValues={initialValues}
           validationSchema={signupSchema}
-          onSubmit={(initialValues) => {
-            fetch("http://step.bangits.com/api/Auth/Register", {
-              method: "POST",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify(initialValues),
-            })
-              .then((res) => {
-                if (res.status < 400) {
-                  alert("Successfully registered !!!");
-                  return res.json();
-                } else {
-                  const err = new Error(
-                    "Network Error:Status code 400 and higher"
-                  );
-                  alert(err);
-                }
-              })
-              .then((resJson) => {
-                console.log(resJson);
-              });
-          }}
+          onSubmit={registerSubmit}
         >
           {({ errors, touched }) => (
             <Form className="form">
-              <span className = "input_names">Username*</span>
+              <span className="input_names">Username*</span>
               <Field
                 name="userName"
                 placeholder="Username"
@@ -58,7 +41,7 @@ export const SignupFormik = (props) => {
               {errors.userName && touched.userName ? (
                 <p className="errorMessage">{errors.userName}</p>
               ) : null}
-              <span className = "input_names">Password*</span>
+              <span className="input_names">Password*</span>
               <Field
                 name="password"
                 placeholder="Password"
@@ -68,7 +51,7 @@ export const SignupFormik = (props) => {
               {errors.password && touched.password ? (
                 <p className="errorMessage">{errors.password}</p>
               ) : null}
-              <span className = "input_names">Confirm password*</span>
+              <span className="input_names">Confirm password*</span>
               <Field
                 name="confirmPassword"
                 placeholder="Confirm Password"
@@ -93,4 +76,4 @@ export const SignupFormik = (props) => {
   );
 };
 
-export default SignupFormik;
+export default Signup;

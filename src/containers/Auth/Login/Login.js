@@ -2,13 +2,19 @@ import React from "react";
 import { Formik, Form, Field } from "formik";
 
 import { loginSchema } from "validate/loginSchema";
+import { loginSubmit } from "api/service";
 import logo from "assets/logo.svg";
 
-import "./LoginFormik.scss";
+import "./Login.scss";
 
-export const LoginFormik = (props) => {
+export const Login = (props) => {
   const changePage = () => {
     props.changePage();
+  };
+
+  const initialValues = {
+    userName: "",
+    password: "",
   };
 
   return (
@@ -20,30 +26,9 @@ export const LoginFormik = (props) => {
           <span className="cool">Cool, just login.</span>
         </div>
         <Formik
-          initialValues={{
-            userName: "",
-            password: "",
-          }}
+          initialValues={initialValues}
           validationSchema={loginSchema}
-          onSubmit={(initialValues) => {
-            fetch("http://step.bangits.com/api/Auth/Login", {
-              method: "POST",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify(initialValues),
-            })
-              .then((res) => {
-                if (res.status < 400) {
-                  alert("Successfully logged in !!!");
-                  return res.json();
-                } else {
-                  const err = new Error("Incorrect username or password");
-                  alert(err);
-                }
-              })
-              .then((resJson) => {
-                console.log(resJson);
-              });
-          }}
+          onSubmit={loginSubmit}
         >
           {({ errors, touched }) => (
             <Form className="form">
@@ -82,4 +67,4 @@ export const LoginFormik = (props) => {
   );
 };
 
-export default LoginFormik;
+export default Login;
