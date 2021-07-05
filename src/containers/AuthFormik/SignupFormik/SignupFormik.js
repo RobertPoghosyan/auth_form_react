@@ -14,7 +14,7 @@ export const SignupFormik = (props) => {
   return (
     <div className="app-signUp">
       <div className="app-signUp__form">
-        <div className="app-signUp__form__btn">
+        <div className="app-signUp__form__logo">
           <img src={logo} alt="logo"></img>
           <h4>Register now!</h4>
         </div>
@@ -49,7 +49,7 @@ export const SignupFormik = (props) => {
         >
           {({ errors, touched }) => (
             <Form className="form">
-              <span>Username*</span>
+              <span className = "input_names">Username*</span>
               <Field
                 name="userName"
                 placeholder="Username"
@@ -58,7 +58,7 @@ export const SignupFormik = (props) => {
               {errors.userName && touched.userName ? (
                 <p className="errorMessage">{errors.userName}</p>
               ) : null}
-              <span>Password*</span>
+              <span className = "input_names">Password*</span>
               <Field
                 name="password"
                 placeholder="Password"
@@ -68,7 +68,7 @@ export const SignupFormik = (props) => {
               {errors.password && touched.password ? (
                 <p className="errorMessage">{errors.password}</p>
               ) : null}
-              <span>Confirm password*</span>
+              <span className = "input_names">Confirm password*</span>
               <Field
                 name="confirmPassword"
                 placeholder="Confirm Password"
