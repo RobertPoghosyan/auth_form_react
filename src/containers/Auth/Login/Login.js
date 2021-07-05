@@ -5,7 +5,7 @@ import { loginSchema } from "validate/loginSchema";
 import { loginSubmit } from "api/service";
 import logo from "assets/logo.svg";
 
-import "./Login.scss";
+import "../Auth.scss";
 
 export const Login = (props) => {
   const changePage = () => {
@@ -18,9 +18,9 @@ export const Login = (props) => {
   };
 
   return (
-    <div className="app-signIn">
-      <div className="app-signIn__form">
-        <div className="app-signIn__form__logo">
+    <div className="app-sign">
+      <div className="app-sign__form">
+        <div className="app-sign__form__logo">
           <img src={logo} alt="logo"></img>
           <h4>Already have an account?</h4>
           <span className="cool">Cool, just login.</span>
@@ -37,7 +37,7 @@ export const Login = (props) => {
                 name="userName"
                 type="text"
                 placeholder="Username"
-                className="app-signIn__form__input"
+                className="app-sign__form__input"
               />
               {errors.userName && touched.userName ? (
                 <p className="errorMessage">{errors.userName}</p>
@@ -47,18 +47,18 @@ export const Login = (props) => {
                 name="password"
                 placeholder="Password"
                 type="password"
-                className="app-signIn__form__input"
+                className="app-sign__form__input"
               />
               {errors.password && touched.password ? (
                 <p className="errorMessage">{errors.password}</p>
               ) : null}
-              <button className="app-signIn__form__submit" type="submit">
+              <button className="app-sign__form__submit" type="submit">
                 Sign In
               </button>
             </Form>
           )}
         </Formik>
-        <div className="app-signIn__form__reg">
+        <div className="app-sign__form__reg">
           <span>Don't have an account?</span>{" "}
           <button onClick={changePage}>Register now!</button>
         </div>

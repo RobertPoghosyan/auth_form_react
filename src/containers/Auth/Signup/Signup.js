@@ -5,7 +5,7 @@ import { signupSchema } from "validate/signupSchema";
 import { registerSubmit } from "api/service";
 import logo from "assets/logo.svg";
 
-import "./Signup.scss";
+import "../Auth.scss";
 
 export const Signup = (props) => {
   const changePage = () => {
@@ -19,9 +19,9 @@ export const Signup = (props) => {
   };
 
   return (
-    <div className="app-signUp">
-      <div className="app-signUp__form">
-        <div className="app-signUp__form__logo">
+    <div className="app-sign">
+      <div className="app-sign__form">
+        <div className="app-sign__form__logo">
           <img src={logo} alt="logo"></img>
           <h4>Register now!</h4>
         </div>
@@ -36,7 +36,7 @@ export const Signup = (props) => {
               <Field
                 name="userName"
                 placeholder="Username"
-                className="app-signUp__input"
+                className="app-sign__form__input"
               />
               {errors.userName && touched.userName ? (
                 <p className="errorMessage">{errors.userName}</p>
@@ -46,7 +46,7 @@ export const Signup = (props) => {
                 name="password"
                 placeholder="Password"
                 type="password"
-                className="app-signUp__input"
+                className="app-sign__form__input"
               />
               {errors.password && touched.password ? (
                 <p className="errorMessage">{errors.password}</p>
@@ -56,18 +56,18 @@ export const Signup = (props) => {
                 name="confirmPassword"
                 placeholder="Confirm Password"
                 type="password"
-                className="app-signUp__input"
+                className="app-sign__form__input"
               />
               {errors.confirmPassword && touched.confirmPassword ? (
                 <p className="errorMessage">{errors.confirmPassword}</p>
               ) : null}
-              <button className="app-signUp__form__submit" type="submit">
+              <button className="app-sign__form__submit" type="submit">
                 Sign Up
               </button>
             </Form>
           )}
         </Formik>
-        <div className="app-signUp__form__reg">
+        <div className="app-sign__form__reg">
           <span>Do you have an account?</span>{" "}
           <button onClick={changePage}>Sign in!</button>
         </div>
