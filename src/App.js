@@ -1,7 +1,6 @@
-import React from 'react';
-//import TestFormik from 'testFormik';
-import AuthFormik from 'containers/AuthFormik/AuthFormik';
+import React from "react";
 
+import AuthFormik from "containers/AuthFormik/AuthFormik";
 
 function App() {
   return (
